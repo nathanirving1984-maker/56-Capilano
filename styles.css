@@ -491,6 +491,9 @@ li { list-style: none; }
 
 .hero__title em { font-style: italic; color: var(--brass-soft); }
 
+/* Street number in brass, echoing the nav mark. */
+.hero__num { color: var(--brass-soft); }
+
 /* One slim line. No stat cards. */
 .hero__stats {
   display: flex;

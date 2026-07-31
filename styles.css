@@ -764,6 +764,8 @@ li { list-style: none; }
 
 .cell--wide { grid-column: span 6; }
 .cell--tall { grid-column: span 3; }
+/* Three across, for a row of supporting frames under a wide lead. */
+.cell--third { grid-column: span 2; }
 
 .cell__btn {
   display: block;
@@ -799,13 +801,13 @@ li { list-style: none; }
 
 @media (max-width: 54rem) {
   .grid { grid-template-columns: repeat(2, 1fr); }
-  .cell, .cell--tall { grid-column: span 1; }
+  .cell, .cell--tall, .cell--third { grid-column: span 1; }
   .cell--wide { grid-column: span 2; }
 }
 
 @media (max-width: 34rem) {
   .grid { grid-template-columns: 1fr; }
-  .cell, .cell--tall, .cell--wide { grid-column: span 1; }
+  .cell, .cell--tall, .cell--third, .cell--wide { grid-column: span 1; }
   .cell--wide .media, .cell--wide .ph { aspect-ratio: 16 / 9; }
 }
 

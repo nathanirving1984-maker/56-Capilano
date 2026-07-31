@@ -87,7 +87,7 @@ file at the right path** and it appears. No code to touch.
 | `images/view-fairway.jpg` | Three Horizons — panel III |
 | `images/interior-great-room.jpg` | Residence sequence — 01 |
 | `images/interior-kitchen.jpg` | Residence sequence — 02 |
-| `images/interior-primary-suite.jpg` | Residence sequence — 03 |
+| `images/interior-primary-bath.jpg` | Residence sequence — 03 |
 | `images/interior-living.jpg` | Residence sequence — 04 |
 | `images/grounds-01.jpg` | Residence sequence — 05 |
 | `images/exterior-02.jpg` | Residence sequence — 06 |
@@ -96,6 +96,11 @@ file at the right path** and it appears. No code to touch.
 Any of these that is missing renders as a dashed brass placeholder frame
 stating which shot belongs there — so an incomplete site still looks
 deliberate rather than broken.
+
+**Still outstanding.** Four slots are held open and currently show that
+placeholder frame: `view-bay.jpg`, `interior-great-room.jpg`,
+`interior-kitchen.jpg` and `interior-living.jpg`. Save a file at any of those
+paths and it drops straight in — the manifest entries are already written.
 
 ### 2. The gallery — `images/manifest.json`
 

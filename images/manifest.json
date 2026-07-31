@@ -1,41 +1,68 @@
 {
-  "_comment": "Photo manifest. Drop .jpg files into /images/ and list them here. 'tab' may be a string or an array; the Gallery renders every entry whose tab includes 'gallery'. 'size' is \"\" | \"wide\" | \"tall\" and controls the asymmetric grid. 'alt' is optional and falls back to 'caption'. Entries whose file is missing render as a labelled placeholder frame.",
+  "_comment": "Photo manifest. Drop .jpg files into /images/ and list them here. 'tab' may be a string or an array; the Gallery renders every entry whose tab includes 'gallery'. 'size' is \"\" | \"wide\" | \"tall\" and controls the asymmetric grid. 'alt' is optional and falls back to 'caption'. Entries whose file is missing render as a labelled placeholder frame — the four trailing entries below are outstanding shots held open on purpose.",
   "basePath": "images/",
   "images": [
     {
       "file": "hero-aerial.jpg",
-      "caption": "The ridge from above — the club below, the bay beyond",
+      "caption": "The ridge from above — the club below, the hills beyond",
+      "alt": "Aerial view of 56 Capilano Drive on its wooded hilltop parcel, with the fairways of Marin Country Club below and the ridge line beyond.",
       "tab": ["about", "gallery"],
       "size": "wide"
     },
     {
-      "file": "view-bay.jpg",
-      "caption": "San Pablo Bay — east, open water",
-      "tab": ["about", "gallery"],
-      "size": "tall"
-    },
-    {
-      "file": "view-valley.jpg",
-      "caption": "Ignacio Valley — south, the valley floor",
-      "tab": ["about", "gallery"],
-      "size": ""
-    },
-    {
-      "file": "view-fairway.jpg",
-      "caption": "Marin Country Club — west, the fairways",
-      "tab": ["about", "gallery"],
-      "size": ""
-    },
-    {
       "file": "exterior-01.jpg",
       "caption": "Approach from Capilano Drive",
+      "alt": "The front elevation of the 1963 residence, its butterfly rooflines rising above a bark-mulched entry court and stepped stone path.",
       "tab": ["about", "gallery"],
       "size": ""
     },
     {
       "file": "exterior-02.jpg",
-      "caption": "West elevation, late afternoon",
-      "tab": "gallery",
+      "caption": "The residence on the ridge, from above",
+      "alt": "Aerial view of the residence set into the crown of the ridge, with open hills behind and the club grounds below to the west.",
+      "tab": ["about", "gallery"],
+      "size": ""
+    },
+    {
+      "file": "view-valley.jpg",
+      "caption": "From the terrace — the valley and the hills beyond",
+      "alt": "The view out from the terrace at 56 Capilano Drive, over the treetops to the open hills across the valley.",
+      "tab": ["about", "gallery"],
+      "size": "tall"
+    },
+    {
+      "file": "view-fairway.jpg",
+      "caption": "Marin Country Club — the fairways below",
+      "alt": "The fairways, greens and bunkers of Marin Country Club seen from above, with the wooded hillside rising behind them.",
+      "tab": ["about", "gallery"],
+      "size": ""
+    },
+    {
+      "file": "grounds-01.jpg",
+      "caption": "Pool, terrace and lawn, the club beyond",
+      "alt": "The pool, terrace and lawn behind the residence, with the fairways of Marin Country Club immediately beyond the tree line.",
+      "tab": ["about", "gallery"],
+      "size": "wide"
+    },
+    {
+      "file": "grounds-02.jpg",
+      "caption": "The 1.13-acre parcel, hilltop siting",
+      "alt": "Overhead view of the full parcel — the residence, its circular drive, the pool terrace and the rear lawn.",
+      "tab": ["about", "gallery"],
+      "size": ""
+    },
+    {
+      "file": "interior-primary-bath.jpg",
+      "caption": "Primary bath — soaking tub set into the window wall",
+      "alt": "A freestanding soaking tub in the primary bath, set into a wall of wood-framed windows looking out to the hills.",
+      "tab": ["about", "gallery"],
+      "size": "tall"
+    },
+
+    {
+      "file": "view-bay.jpg",
+      "caption": "San Pablo Bay — east, open water",
+      "tab": ["about", "gallery"],
       "size": ""
     },
     {
@@ -45,34 +72,16 @@
       "size": "tall"
     },
     {
-      "file": "interior-living.jpg",
-      "caption": "Living room",
-      "tab": "gallery",
-      "size": ""
-    },
-    {
       "file": "interior-kitchen.jpg",
       "caption": "Kitchen",
       "tab": ["about", "gallery"],
       "size": ""
     },
     {
-      "file": "interior-primary-suite.jpg",
-      "caption": "Primary suite — one of seven bedrooms",
-      "tab": ["about", "gallery"],
-      "size": "wide"
-    },
-    {
-      "file": "grounds-01.jpg",
-      "caption": "Terrace and grounds",
-      "tab": ["about", "gallery"],
-      "size": ""
-    },
-    {
-      "file": "grounds-02.jpg",
-      "caption": "The 1.13-acre parcel, hilltop siting",
+      "file": "interior-living.jpg",
+      "caption": "Living room",
       "tab": "gallery",
-      "size": "tall"
+      "size": ""
     }
   ]
 }

@@ -994,11 +994,21 @@ li { list-style: none; }
 
 .foot__top {
   display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(2rem, 5vw, 4rem);
+  grid-template-columns: minmax(0, 1.15fr) repeat(3, minmax(0, 1fr));
+  gap: clamp(1.75rem, 4vw, 3.25rem);
   padding-bottom: 2.5rem;
   border-bottom: 1px solid var(--hair-invert);
 }
+
+/* A footer slot awaiting real details. Uses the same dashed-brass language as
+   a missing photograph so it reads as deliberately unfilled, not broken. */
+.foot__tbd {
+  border-left: 1px dashed rgba(176, 141, 87, 0.45);
+  padding-left: clamp(0.9rem, 1.5vw, 1.25rem);
+}
+
+.foot__tbd .foot__who,
+.foot__tbd .foot__line { opacity: 0.5; }
 
 .foot__mark {
   font-family: var(--serif);
@@ -1065,8 +1075,20 @@ li { list-style: none; }
   color: rgba(239, 232, 216, 0.45);
 }
 
-@media (max-width: 54rem) {
+@media (max-width: 72rem) {
+  .foot__top { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 44rem) {
   .foot__top { grid-template-columns: 1fr; }
+
+  /* Stacked, a left rule reads as an indent — put it on top instead. */
+  .foot__tbd {
+    border-left: 0;
+    border-top: 1px dashed rgba(176, 141, 87, 0.45);
+    padding-left: 0;
+    padding-top: 1.25rem;
+  }
 }
 
 /* --------------------------------------------------------------------------

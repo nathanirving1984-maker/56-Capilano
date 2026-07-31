@@ -48,6 +48,24 @@ late and the pages stay readable and crawlable with JavaScript disabled.
 marked with `<!-- ===== NAV ... ===== -->` and `<!-- ===== FOOTER ... ===== -->`.
 Only two things differ per page: the `is-active` class and `aria-current="page"`.
 
+### The "Listed by" footer slot — placeholder
+
+The fourth footer column is a **placeholder awaiting the listing brokerage's
+details**. Amadeo Arnal and Nathan Irving are shown as *showing agents*; this
+slot is where the actual listing agent and brokerage go.
+
+It carries a `foot__tbd` class that dims it and adds a dashed brass rule, so it
+reads as deliberately unfilled rather than broken. To fill it in:
+
+1. Replace the four lines (agent name/title, brokerage/office, phone, email).
+2. Wrap the phone and email in links to match the blocks beside it — the exact
+   pattern is in an HTML comment directly above the block.
+3. Delete `class="foot__tbd"` from the `<div>` so the dashed treatment comes off.
+4. Repeat on all four pages.
+
+**Do not ship publicly with this slot as-is** — placeholder text where the
+listing brokerage belongs is worse than no column at all.
+
 ---
 
 ## Adding photography

@@ -1,90 +1,166 @@
 # 56 Capilano Drive, Novato, CA 94949
 
-Single-property listing site. Static HTML/CSS/vanilla JS — no build step, no
-dependencies, no backend. Deploys to GitHub Pages as-is.
+Single-property listing site. Photography-led: images are the subject of every
+section and type is a caption on them. Static HTML/CSS/vanilla JS — no build
+step, no dependencies, no backend.
 
 **$3,049,000 · 7 bd · 9 ba · 6,469 sq ft · 1.13 acres · MLS# 326044403**
+
+**Live:** https://nathanirving1984-maker.github.io/56-Capilano/
 
 ---
 
 ## Structure
 
 ```
-index.html               About      (landing tab)
-location.html            Location
-gallery.html             Gallery
-contact.html             Contact
+index.html            About / home — full-bleed aerial hero
+about.html            redirect stub → index.html
+location.html         Location
+gallery.html          Gallery
+contact.html          Contact
 
-styles.css               Every design token and component. Shared by all pages.
-js/site.js               Scroll reveal + contact-form mailto composer.
-js/gallery-manifest.js   ← the file you edit to add photos
-js/gallery.js            Renders the gallery grid and lightbox.
-images/gallery/          ← drop MLS photography here
+styles.css            Every token and component. Shared by all pages.
+js/site.js            Nav-over-hero, scroll reveal, photo fallbacks, contact form
+js/gallery.js         Builds the gallery grid + lightbox from the manifest
+
+images/manifest.json  ← the file you edit to add gallery photos
+images/               ← your .jpg files land here, flat
+
 favicon.svg
-.nojekyll                Serve files verbatim; skip Jekyll processing.
+.nojekyll             Serve files verbatim; skip Jekyll processing
+.github/workflows/pages.yml   Deploys the site on every push
 ```
+
+### Why About lives at `index.html`
+
+GitHub Pages serves `index.html` at the site root. Since the aerial is the
+entire first impression, it must not sit behind a redirect hop — so the real
+About page is `index.html`, and `about.html` is a small stub that forwards to
+it for anyone who types the URL directly.
 
 ### Why the nav is duplicated
 
-There is no templating engine on GitHub Pages. The nav and footer markup are
-duplicated verbatim across the four pages rather than injected by JS, so the
-header never flashes in late and the pages remain readable and crawlable with
-JavaScript disabled.
+No templating engine on GitHub Pages. The nav and footer markup are duplicated
+across the pages rather than injected by JS, so the header never flashes in
+late and the pages stay readable and crawlable with JavaScript disabled.
 
-**When editing the nav or footer, change all four pages.** Each block is marked
-with `<!-- ===== NAV ... ===== -->` and `<!-- ===== FOOTER ... ===== -->`. Only
-two things differ per page: the `is-active` class and the `aria-current="page"`
-attribute on the current tab.
+**When editing the nav or footer, change all four pages.** Each block is
+marked with `<!-- ===== NAV ... ===== -->` and `<!-- ===== FOOTER ... ===== -->`.
+Only two things differ per page: the `is-active` class and `aria-current="page"`.
 
 ---
 
 ## Adding photography
 
-1. Drop image files into `images/gallery/`.
-2. Open `js/gallery-manifest.js` and fill in the matching `src` values.
+There are two separate mechanisms, on purpose.
 
-```js
+### 1. Named slots — About and Location
+
+These are fixed paths written directly into the markup, so the hero paints
+immediately with no JavaScript and no manifest round-trip. **Just save the
+file at the right path** and it appears. No code to touch.
+
+| Path | Where it appears |
+|---|---|
+| `images/hero-aerial.jpg` | **The anchor image.** Full-bleed hero, About |
+| `images/exterior-01.jpg` | "The offering" statement pair, About |
+| `images/view-bay.jpg` | Three Horizons — panel I |
+| `images/view-valley.jpg` | Three Horizons — panel II, and the Location lead photo |
+| `images/view-fairway.jpg` | Three Horizons — panel III |
+| `images/interior-great-room.jpg` | Residence sequence — 01 |
+| `images/interior-kitchen.jpg` | Residence sequence — 02 |
+| `images/interior-primary-suite.jpg` | Residence sequence — 03 |
+| `images/interior-living.jpg` | Residence sequence — 04 |
+| `images/grounds-01.jpg` | Residence sequence — 05 |
+| `images/exterior-02.jpg` | Residence sequence — 06 |
+| `images/grounds-02.jpg` | Closing image, Contact |
+
+Any of these that is missing renders as a dashed brass placeholder frame
+stating which shot belongs there — so an incomplete site still looks
+deliberate rather than broken.
+
+### 2. The gallery — `images/manifest.json`
+
+The Gallery tab is built entirely from the manifest, so you can add, remove,
+and reorder photographs without touching markup or JS.
+
+```json
 {
-  label: "Bay view — principal room, facing east",
-  src:   "principal-room-bay.jpg",   // resolves to images/gallery/
-  size:  "tall",                     // "" | "wide" | "tall"
-  alt:   "…"                         // optional; defaults to label
+  "basePath": "images/",
+  "images": [
+    {
+      "file": "view-bay.jpg",
+      "caption": "San Pablo Bay — east, open water",
+      "tab": ["about", "gallery"],
+      "size": "tall",
+      "alt": "optional; falls back to caption"
+    }
+  ]
 }
 ```
 
-Any slot with an empty `src` renders as a dashed brass placeholder frame
-carrying its label — so the page stays presentable while photography is
-outstanding. Add, remove, and reorder slots freely; nothing else changes.
-A filename typo degrades to a placeholder rather than a broken-image icon.
+| Field | Meaning |
+|---|---|
+| `file` | Filename, resolved against `basePath`. A path or full URL also works. |
+| `caption` | Mono caption under the photo and in the lightbox. Say what the shot **is**. |
+| `tab` | String or array. The Gallery renders every entry whose `tab` includes `"gallery"`. |
+| `size` | `""` standard · `"wide"` full-width · `"tall"` portrait |
+| `alt` | Optional alt text; defaults to `caption`. |
 
-**Sizing:** aim for ~2000px on the long edge, JPEG, under ~400 KB each.
-GitHub Pages has a soft 1 GB repository limit and no image processing.
+A manifest entry whose file is missing becomes a labelled placeholder and is
+skipped by the lightbox, so arrow-nav never lands on an empty frame.
 
-**Social preview:** the pages reference `images/og-cover.jpg` for link previews.
-Add that file (1200×630) once you have a hero shot.
+### ⚠️ Local preview needs a server
+
+The manifest is JSON, and browsers block `fetch()` on `file://` URLs. Opening
+`gallery.html` by double-clicking will show a note instead of the grid. To
+preview properly:
+
+```sh
+python3 -m http.server 8000
+# then http://localhost:8000/
+```
+
+The other three pages work fine opened directly.
+
+### Pre-optimize before committing
+
+There is no image processing on GitHub Pages — files are served exactly as
+committed, and the repo has a soft 1 GB limit.
+
+- **Resize** to ~2400px on the long edge (~3000px for `hero-aerial.jpg`).
+- **Compress** to JPEG quality ~80. Target under 400 KB each; the hero can go
+  to ~600 KB.
+- **Strip EXIF**, which can carry GPS coordinates from the shoot.
+
+```sh
+# ImageMagick, in place
+mogrify -resize 2400x2400\> -quality 80 -strip images/*.jpg
+```
+
+Everything below the first screen is already `loading="lazy"`; the hero is
+marked `fetchpriority="high"` so it wins the race for the first paint.
 
 ---
 
 ## The map
 
-`location.html` embeds OpenStreetMap, which needs no API key and no billing
-account. The marker is placed on the Capilano Drive ridge for orientation and
-is labelled as approximate.
+`location.html` embeds OpenStreetMap — a real map, no API key, no billing.
+The marker is placed on the Capilano Drive ridge and labelled approximate.
 
-To swap in Google Maps once you have an API key, replace the `<iframe src>` in
-the `.map` block with either the
+If you would rather ship a static map image, save one as
+`images/location-map.jpg` and replace the `<iframe class="map__embed">` with
+an `<img>`. To use Google instead, swap the iframe `src` for the
 [Maps Embed API](https://developers.google.com/maps/documentation/embed/get-started)
-or a Static Maps image. Keep the `.map__caption` bar — it carries the address
-and the "open in maps" link.
+once you have a key.
 
 ---
 
 ## The contact form
 
-No backend exists, so the form composes a message in the visitor's own mail
-client. Nothing is transmitted or stored by the site.
-
-Recipients are set as data attributes on the `<form>` in `contact.html`:
+No backend, so the form composes a message in the visitor's own mail client.
+Nothing is transmitted or stored by the site. Recipients are data attributes
+on the `<form>` in `contact.html`:
 
 ```html
 <form id="inquiry"
@@ -93,66 +169,43 @@ Recipients are set as data attributes on the `<form>` in `contact.html`:
       data-subject="56 Capilano Drive - Private Showing Request">
 ```
 
-If you later add a real form handler (Formspree, Netlify Forms, Basin), give
-the `<form>` an `action` attribute and a `method="POST"`. `js/site.js` detects
-the `action` and stands down automatically — no code change needed.
-
----
-
-## Copy to review before launch
-
-The property facts (price, beds, baths, square footage, lot, year, MLS number,
-district) are exactly as supplied. Two categories of prose were written *around*
-those facts and should be checked against the actual MLS sheet:
-
-- **Feature grid and statement copy** (`index.html`) describe the residence in
-  terms of the known figures. They deliberately avoid claiming finishes,
-  appliances, or room counts that were not supplied — but confirm the framing
-  matches the property before it goes live.
-- **Compass bearings on Three Horizons** (bay east, valley south, fairways
-  west) and **all distances on `location.html`** are approximate, derived from
-  the general geography of Ignacio Valley. They are labelled as approximate on
-  the page. Verify against the actual site orientation.
-- **School assignment** is stated only at district level (Novato Unified), since
-  individual school boundaries change. The page directs buyers to confirm with
-  the district.
-
----
-
-## Local preview
-
-No server required — open `index.html` in a browser. (The gallery manifest is a
-`.js` file rather than `.json` specifically so it works over `file://` without
-a local server.)
-
-To run one anyway:
-
-```sh
-python3 -m http.server 8000
-```
+If you later add a real handler (Formspree, Netlify Forms, Basin), give the
+`<form>` an `action` and `method="POST"`. `js/site.js` detects the `action`
+and stands down automatically — no code change.
 
 ---
 
 ## Deploying
 
-Deployment is automatic via `.github/workflows/pages.yml`. Every push to
-`main` or `claude/capilano-listing-site-2fc6um` publishes the repository root
-to GitHub Pages. You can also trigger it by hand from the Actions tab
-("Deploy to GitHub Pages" → Run workflow).
-
-**Live at:** https://nathanirving1984-maker.github.io/56-Capilano/
+Automatic via `.github/workflows/pages.yml`. Every push to `main` or
+`claude/capilano-listing-site-2fc6um` publishes the repository root. You can
+also run it by hand from the Actions tab.
 
 The workflow exists because this repository was created empty and has no
-default branch with content, so Pages offers only the "GitHub Actions" source
-— "Deploy from a branch" has no branch to point at. The workflow passes
-`enablement: true` to `actions/configure-pages`, so it switches Pages on
-itself; nothing needs setting in Settings → Pages.
+default branch with content, so Pages offers only the "GitHub Actions" source.
+It passes `enablement: true` to `actions/configure-pages`, so it switches Pages
+on itself — nothing to set in Settings → Pages.
 
-If you later create a `main` branch and prefer the simpler branch-based
-deploy, you can delete this workflow and switch the source over.
+All internal links are relative, so the site works at both a user-site root and
+the `/56-Capilano/` project path it currently uses.
 
-All internal links are relative, so the site works at both a user-site root
-and the `/56-Capilano/` project path it currently uses.
+---
+
+## Copy to review before launch
+
+Facts (price, beds, baths, sq ft, lot, year, MLS#, district) are exactly as
+supplied. Two things were written *around* those facts and should be checked:
+
+- **Compass bearings** on Three Horizons (bay east, valley south, fairways
+  west) and **all distances on Location** are approximate, derived from the
+  general geography of Ignacio Valley. Both are labelled approximate on the
+  page. Verify against the actual site orientation.
+- **Captions and one-line copy** deliberately avoid claiming finishes,
+  appliances, or room counts that were not supplied. Once real photography
+  lands, the captions should be checked against what the images actually show
+  — a caption that contradicts its photo is worse than no caption.
+
+School assignment is stated at district level only; individual boundaries move.
 
 ---
 
@@ -161,22 +214,25 @@ and the `/56-Capilano/` project path it currently uses.
 | Token | Value | Use |
 |---|---|---|
 | `--ink` | `#122120` | Body text |
-| `--teal` | `#1B4F4C` | Primary buttons, links |
-| `--teal-deep` | `#0F2D2B` | Hero, footer, dark panels |
-| `--sand` | `#EFE8D8` | Section panels, stat bar |
+| `--teal` | `#1B4F4C` | Links, the one solid button |
+| `--teal-deep` | `#0F2D2B` | Hero scrim, dark sections, footer |
+| `--sand` | `#EFE8D8` | Image ground before load |
 | `--paper` | `#FBF8F1` | Page ground |
 | `--brass` | `#B08D57` | Eyebrows, active tab, sightlines, focus rings |
-| `--brass-soft` | `#D9C09B` | Placeholder frames, dark-panel accents |
+| `--brass-soft` | `#D9C09B` | Placeholder frames, accents on dark |
 | `--mist` | `#A9C2C0` | Secondary labels on dark |
 
-**Type:** Fraunces (display), Public Sans (body), IBM Plex Mono (eyebrows,
-stats, spec sheets, nav labels) — all via Google Fonts.
+**Type:** Fraunces (display, used sparingly and large), Public Sans (the little
+body copy there is), IBM Plex Mono (eyebrows, nav labels, captions).
 
-**Signature element:** *Three Horizons* on the About page — San Pablo Bay,
-Ignacio Valley, Marin Country Club, each with a brass sightline that draws from
-a struck origin point out toward the horizon it names. The sightline animates
-on scroll and holds its finished state under `prefers-reduced-motion`.
+**Chrome:** hairline dividers only — no cards, no filled panels behind photos,
+no boxed data tables. The spec sheet is a single slim inline strip. Form inputs
+are underlines, not boxes.
 
-**Accessibility:** skip link, visible brass focus rings throughout, keyboard-
-driven lightbox (Esc / ← / →, focus trapped and restored), `aria-current` on the
-active tab, and full `prefers-reduced-motion` support.
+**Motion:** slow crossfade and rise on scroll, nothing busy. Photos fade in as
+they decode; the Three Horizons sightlines draw once. All of it collapses to
+finished-state under `prefers-reduced-motion`.
+
+**Accessibility:** skip link, brass focus rings throughout, `aria-current` on
+the active tab, keyboard lightbox (Esc / ← / →) with focus trapped and
+restored, and descriptive alt text on every named slot.

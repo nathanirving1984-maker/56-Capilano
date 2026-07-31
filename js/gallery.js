@@ -1,181 +1,191 @@
 /* ==========================================================================
-   Gallery — renders the grid from js/gallery-manifest.js and drives the
-   lightbox. Nothing here needs editing to add photos; edit the manifest.
+   Gallery — builds the grid from images/manifest.json and drives the
+   lightbox. To add photographs, edit the manifest; nothing here changes.
    ========================================================================== */
 
 (function () {
   'use strict';
 
-  var BASE = 'images/gallery/';
-
-  var grid = document.getElementById('gallery');
+  var grid = document.getElementById('grid');
   if (!grid) return;
 
-  var slots = Array.isArray(window.GALLERY_SLOTS) ? window.GALLERY_SLOTS : [];
+  var note = document.getElementById('grid-note');
+  var shots = [];   // filled entries only — what the lightbox pages through
 
-  /* Filled slots are the ones the lightbox can page through. Populated as we
-     build, so its indices stay in step with the buttons we wire up. */
-  var shots = [];
+  function el(tag, cls) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    return n;
+  }
 
-  /* ---------------------------------------------------------------- helpers */
+  /* `tab` may be a string or an array of strings. */
+  function onTab(entry, tab) {
+    var t = entry.tab;
+    if (!t) return false;
+    return Array.isArray(t) ? t.indexOf(tab) !== -1 : t === tab;
+  }
 
-  function resolve(src) {
-    if (!src) return '';
-    // Absolute URL, root-relative, or already carrying a directory: leave alone.
-    if (/^(https?:)?\/\//.test(src) || src.charAt(0) === '/' || src.indexOf('/') !== -1) {
-      return src;
+  function resolve(base, file) {
+    if (/^(https?:)?\/\//.test(file) || file.charAt(0) === '/') return file;
+    return (base || '') + file;
+  }
+
+  /* ------------------------------------------------------------------ build */
+
+  function build(manifest) {
+    var base = manifest.basePath || 'images/';
+    var entries = (manifest.images || []).filter(function (e) {
+      return e && e.file && onTab(e, 'gallery');
+    });
+
+    if (!entries.length) {
+      showNote('The manifest lists no gallery photographs yet. Add entries to images/manifest.json.');
+      return;
     }
-    return BASE + src;
-  }
 
-  function el(tag, className) {
-    var node = document.createElement(tag);
-    if (className) node.className = className;
-    return node;
-  }
-
-  function placeholder(label) {
-    var frame = el('div', 'frame');
-    var text = el('p', 'frame__label');
-    text.textContent = label;
-    frame.appendChild(text);
-    return frame;
-  }
-
-  /* ------------------------------------------------------------- build grid */
-
-  function build() {
     var frag = document.createDocumentFragment();
-    var filledCount = 0;
 
-    slots.forEach(function (slot, i) {
-      var label = (slot && slot.label) || 'Photography to follow';
-      var src = resolve(slot && slot.src);
+    entries.forEach(function (entry, i) {
+      var caption = entry.caption || entry.file;
+      var src = resolve(base, entry.file);
 
-      var figure = el('figure', 'shot');
-      if (slot && slot.size === 'wide') figure.classList.add('shot--wide');
-      if (slot && slot.size === 'tall') figure.classList.add('shot--tall');
-
-      if (!src) {
-        figure.appendChild(placeholder(label));
-        frag.appendChild(figure);
-        return;
-      }
+      var cell = el('figure', 'cell');
+      if (entry.size === 'wide') cell.classList.add('cell--wide');
+      if (entry.size === 'tall') cell.classList.add('cell--tall');
 
       var index = shots.length;
-      shots.push({ src: src, label: label, alt: (slot.alt || label) });
-      filledCount++;
+      shots.push({ src: src, caption: caption, alt: entry.alt || caption });
 
-      var btn = el('button', 'shot__btn');
+      var btn = el('button', 'cell__btn');
       btn.type = 'button';
-      btn.setAttribute('aria-label', 'Enlarge: ' + label);
+      btn.setAttribute('aria-label', 'Enlarge: ' + caption);
       btn.dataset.index = String(index);
 
-      var img = el('img', 'shot__img');
+      var media = el('div', 'media');
+      var img = el('img');
       img.src = src;
-      img.alt = slot.alt || label;
+      img.alt = entry.alt || caption;
       img.decoding = 'async';
-      // The first couple of shots are above the fold on most screens.
+      img.setAttribute('data-label', caption);
+      // Everything below the first row is lazy.
       if (i > 1) img.loading = 'lazy';
 
-      /* A typo'd filename should degrade to the placeholder treatment rather
-         than leaving a broken-image icon in a luxury listing. */
-      img.addEventListener('error', function () {
-        var slotIdx = shots.findIndex(function (s) { return s.src === src; });
-        if (slotIdx !== -1) shots[slotIdx].broken = true;
-        figure.innerHTML = '';
-        figure.appendChild(placeholder(label + ' — file not found'));
-      });
+      /* A slot with no file yet becomes a placeholder and drops out of the
+         lightbox sequence, so arrow-nav never lands on an empty frame. The
+         frame itself is drawn by the shared handler in site.js; this just
+         unwraps the button so an empty frame is not clickable. */
+      function markMissing() {
+        if (shots[index].missing) return;
+        shots[index].missing = true;
+        if (btn.parentNode) btn.replaceWith(media);
+      }
 
-      var cap = el('figcaption', 'shot__cap');
-      cap.textContent = label;
+      img.addEventListener('error', markMissing);
 
-      btn.appendChild(img);
-      btn.appendChild(cap);
-      figure.appendChild(btn);
-      frag.appendChild(figure);
+      img.addEventListener('load', function () { img.classList.add('is-loaded'); });
+
+      media.appendChild(img);
+
+      var cap = el('figcaption', 'cell__cap');
+      cap.textContent = caption;
+
+      btn.appendChild(media);
+      cell.appendChild(btn);
+      cell.appendChild(cap);
+      frag.appendChild(cell);
+
+      /* Guard the same race site.js handles: a file that 404s before the
+         listener is attached arrives already complete with no pixels. */
+      if (img.complete && img.naturalWidth === 0) markMissing();
     });
 
     grid.appendChild(frag);
 
-    var note = document.getElementById('gallery-status');
+    /* Deliberately just the total. Frames below the fold are lazy-loaded, so
+       any "N photographed" count would be wrong until the visitor scrolls —
+       the placeholder frames already say which shots are outstanding. */
     if (note) {
-      if (filledCount === 0) {
-        note.textContent =
-          'Professional photography is being scheduled. ' + slots.length +
-          ' frames are reserved below — each will be filled with the shot named on it.';
-      } else if (filledCount < slots.length) {
-        note.textContent =
-          filledCount + ' of ' + slots.length + ' frames photographed. ' +
-          'Remaining slots show the shot still to come.';
-      } else {
-        note.textContent = filledCount + ' photographs.';
-      }
+      note.textContent = entries.length + ' frames in sequence.';
     }
   }
 
-  /* -------------------------------------------------------------- lightbox */
+  function showNote(message) {
+    var box = el('div', 'grid__note');
+    var p = el('p', 'ph__label');
+    p.textContent = message;
+    box.appendChild(p);
+    grid.appendChild(box);
+  }
+
+  /* --------------------------------------------------------------- lightbox */
 
   function initLightbox() {
     var box = document.getElementById('lightbox');
-    if (!box || shots.length === 0) return;
+    if (!box) return;
 
     var img = box.querySelector('.lightbox__img');
     var cap = box.querySelector('.lightbox__cap');
     var count = box.querySelector('.lightbox__count');
-    var btnPrev = box.querySelector('[data-lb="prev"]');
-    var btnNext = box.querySelector('[data-lb="next"]');
-    var btnClose = box.querySelector('[data-lb="close"]');
+    var prev = box.querySelector('[data-lb="prev"]');
+    var next = box.querySelector('[data-lb="next"]');
+    var close = box.querySelector('[data-lb="close"]');
     var current = 0;
     var lastFocused = null;
 
-    function show(i) {
-      var total = shots.length;
-      current = (i + total) % total;
-      var shot = shots[current];
-      img.src = shot.src;
-      img.alt = shot.alt;
-      cap.textContent = shot.label;
-      count.textContent = (current + 1) + ' / ' + total;
+    function live() {
+      return shots.filter(function (s) { return !s.missing; });
     }
 
-    function open(i) {
+    function show(i) {
+      var list = live();
+      if (!list.length) return;
+      current = (i + list.length) % list.length;
+      var shot = list[current];
+      img.src = shot.src;
+      img.alt = shot.alt;
+      cap.textContent = shot.caption;
+      count.textContent = (current + 1) + ' / ' + list.length;
+    }
+
+    function open(shot) {
+      var list = live();
+      var i = list.indexOf(shot);
+      if (i === -1) return;
       lastFocused = document.activeElement;
       show(i);
       box.hidden = false;
       document.body.style.overflow = 'hidden';
-      btnClose.focus();
+      close.focus();
     }
 
-    function close() {
+    function dismiss() {
       box.hidden = true;
       document.body.style.overflow = '';
-      if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+      if (lastFocused && lastFocused.focus) lastFocused.focus();
     }
 
     grid.addEventListener('click', function (e) {
-      var btn = e.target.closest('.shot__btn');
+      var btn = e.target.closest('.cell__btn');
       if (!btn) return;
-      open(Number(btn.dataset.index));
+      open(shots[Number(btn.dataset.index)]);
     });
 
-    btnPrev.addEventListener('click', function () { show(current - 1); });
-    btnNext.addEventListener('click', function () { show(current + 1); });
-    btnClose.addEventListener('click', close);
+    prev.addEventListener('click', function () { show(current - 1); });
+    next.addEventListener('click', function () { show(current + 1); });
+    close.addEventListener('click', dismiss);
 
-    // Click the backdrop (but not the image or the controls) to dismiss.
+    /* Tap the scrim (not the photograph or the controls) to close. */
     box.addEventListener('click', function (e) {
-      if (e.target === box) close();
+      if (e.target === box) dismiss();
     });
 
     document.addEventListener('keydown', function (e) {
       if (box.hidden) return;
 
-      if (e.key === 'Escape') { close(); return; }
+      if (e.key === 'Escape') { dismiss(); return; }
       if (e.key === 'ArrowLeft') { show(current - 1); return; }
       if (e.key === 'ArrowRight') { show(current + 1); return; }
 
-      /* Keep Tab inside the dialog while it is open. */
       if (e.key === 'Tab') {
         var focusable = box.querySelectorAll('button');
         if (!focusable.length) return;
@@ -192,6 +202,18 @@
     });
   }
 
-  build();
-  initLightbox();
+  window.Manifest.load()
+    .then(function (manifest) {
+      build(manifest);
+      initLightbox();
+    })
+    .catch(function () {
+      /* Most often this is file:// — fetch is blocked there by every browser. */
+      showNote(
+        location.protocol === 'file:'
+          ? 'The gallery reads images/manifest.json, and browsers block that on file:// URLs. Run "python3 -m http.server" in this folder and open http://localhost:8000/gallery.html to preview.'
+          : 'images/manifest.json could not be loaded. Check that the file exists and contains valid JSON.'
+      );
+      if (note) note.textContent = 'Gallery unavailable.';
+    });
 })();

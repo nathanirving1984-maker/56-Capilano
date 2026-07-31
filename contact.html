@@ -11,13 +11,13 @@
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Contact — 56 Capilano Drive, Novato">
-<meta property="og:description" content="Arrange a private showing with Nathan Irving or Amadeo Arnal.">
-<meta property="og:image" content="images/og-cover.jpg">
+<meta property="og:description" content="Private showings by appointment with Nathan Irving or Amadeo Arnal.">
+<meta property="og:image" content="images/hero-aerial.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:ital,wght@0,300..700;1,300..700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:ital,wght@0,300..600;1,300..500&display=swap">
 <link rel="stylesheet" href="styles.css">
 <script src="js/site.js" defer></script>
 </head>
@@ -28,11 +28,7 @@
 <!-- ===== NAV (identical on every page; only .is-active + aria-current move) ===== -->
 <header class="nav">
   <div class="nav__inner">
-    <a class="nav__brand" href="index.html">
-      <span class="nav__brand-num">56</span>
-      <span class="nav__brand-name">Capilano Drive</span>
-      <span class="nav__brand-loc">Novato, CA</span>
-    </a>
+    <a class="nav__brand" href="index.html"><span>56</span> Capilano Drive</a>
     <nav class="nav__tabs" aria-label="Primary">
       <a class="tab" href="index.html">About</a>
       <a class="tab" href="location.html">Location</a>
@@ -44,24 +40,18 @@
 
 <main id="main">
 
-  <!-- ===== PAGE HERO ===== -->
-  <section class="page-hero">
-    <div class="shell">
-      <p class="eyebrow">Private showings by appointment</p>
-      <h1 class="page-hero__title">Come see it<br><em>from the top.</em></h1>
-      <p class="lede">The house does not photograph the way it stands. Showings are arranged directly through the listing agents &mdash; call, write, or send the note below.</p>
-    </div>
+  <!-- Deliberately photo-light: this page is for legibility and action. -->
+  <section class="section shell">
+    <p class="eyebrow">Private showings by appointment</p>
+    <h1 class="display" style="margin-top:1.25rem;max-width:13ch">Come see it <em>from the top.</em></h1>
+    <p class="say" style="margin-top:2rem">The house does not photograph the way it stands. Showings are arranged directly through the listing agents.</p>
   </section>
 
-  <!-- ===== AGENT CARDS ===== -->
-  <section class="section shell">
-    <div class="section-head">
-      <p class="eyebrow">01 &mdash; Representation</p>
-    </div>
-
+  <!-- ===== AGENTS ===== -->
+  <section class="section--tight shell">
     <div class="agents">
 
-      <article class="agent reveal">
+      <article class="agent rise">
         <h2 class="agent__name">Nathan Irving</h2>
         <p class="agent__role">
           REALTOR<sup>&reg;</sup> &middot; DRE# 02414117<br>
@@ -80,11 +70,11 @@
         </dl>
 
         <p class="agent__cta">
-          <a class="btn btn--primary" href="mailto:nathan.irving@cbrealty.com?subject=56%20Capilano%20Drive%20-%20Private%20Showing%20Request">Email Nathan</a>
+          <a class="btn btn--solid" href="mailto:nathan.irving@cbrealty.com?subject=56%20Capilano%20Drive%20-%20Private%20Showing%20Request">Email Nathan</a>
         </p>
       </article>
 
-      <article class="agent reveal">
+      <article class="agent rise">
         <h2 class="agent__name">Amadeo Arnal</h2>
         <p class="agent__role">
           Co-listing agent<br>
@@ -103,7 +93,7 @@
         </dl>
 
         <p class="agent__cta">
-          <a class="btn btn--primary" href="mailto:Amadeo@AmadeoArnal.com?subject=56%20Capilano%20Drive%20-%20Private%20Showing%20Request">Email Amadeo</a>
+          <a class="btn btn--solid" href="mailto:Amadeo@AmadeoArnal.com?subject=56%20Capilano%20Drive%20-%20Private%20Showing%20Request">Email Amadeo</a>
         </p>
       </article>
 
@@ -111,55 +101,53 @@
   </section>
 
   <!-- ===== INQUIRY FORM ===== -->
-  <section class="panel-sand">
-    <div class="section shell">
-      <div class="section-head">
-        <p class="eyebrow">02 &mdash; Send a note</p>
+  <section class="section shell">
+    <hr class="hair" style="margin-bottom:clamp(2.5rem,6vw,4rem)">
+
+    <p class="eyebrow">Send a note</p>
+    <p class="say" style="margin:1.5rem 0 2.5rem">Tell us when you would like to walk it. This opens your own mail application &mdash; nothing is transmitted or stored by this site.</p>
+
+    <form class="form" id="inquiry"
+          data-to="nathan.irving@cbrealty.com"
+          data-cc="Amadeo@AmadeoArnal.com"
+          data-subject="56 Capilano Drive - Private Showing Request">
+
+      <div class="field">
+        <label for="f-name">Your name</label>
+        <input type="text" id="f-name" name="name" autocomplete="name" required>
       </div>
 
-      <p class="lede" style="margin-bottom:2.5rem">Tell us when you would like to walk it. This form opens your own mail application with the message composed &mdash; nothing is transmitted or stored by this site.</p>
+      <div class="field">
+        <label for="f-email">Email</label>
+        <input type="email" id="f-email" name="email" autocomplete="email" required>
+      </div>
 
-      <form class="form" id="inquiry"
-            data-to="nathan.irving@cbrealty.com"
-            data-cc="Amadeo@AmadeoArnal.com"
-            data-subject="56 Capilano Drive - Private Showing Request">
+      <div class="field">
+        <label for="f-message">Message</label>
+        <textarea id="f-message" name="message" required placeholder="Preferred days and times, and anything you would like to know in advance."></textarea>
+      </div>
 
-        <div class="field">
-          <label for="f-name">Your name</label>
-          <input type="text" id="f-name" name="name" autocomplete="name" required>
-        </div>
+      <div class="form__actions">
+        <button class="btn btn--solid" type="submit">Compose the email</button>
+        <p class="form__status" id="form-status" role="status"></p>
+      </div>
+    </form>
 
-        <div class="field">
-          <label for="f-email">Email</label>
-          <input type="email" id="f-email" name="email" autocomplete="email" required>
-        </div>
-
-        <div class="field">
-          <label for="f-message">Message</label>
-          <textarea id="f-message" name="message" required placeholder="Preferred days and times for a showing, and anything you would like to know in advance."></textarea>
-        </div>
-
-        <div class="form__actions">
-          <button class="btn btn--primary" type="submit">Compose the email</button>
-          <p class="form__status" id="form-status" role="status"></p>
-        </div>
-      </form>
-
-      <p class="mono-note" style="margin-top:2rem">Prefer to skip the form? Call Nathan Irving at <a href="tel:+14152094864" style="color:inherit">415.209.4864</a> or Amadeo Arnal at <a href="tel:+14155312599" style="color:inherit">415.531.2599</a>.</p>
-    </div>
+    <p class="cap" style="margin-top:2.5rem">Or call Nathan Irving at 415.209.4864 &middot; Amadeo Arnal at 415.531.2599</p>
   </section>
 
-  <!-- ===== CLOSING ===== -->
-  <section class="panel-dark">
-    <div class="section shell">
-      <p class="eyebrow">56 Capilano Drive &middot; Novato, CA 94949</p>
-      <h2 class="closing__title">One address. <em>Three horizons.</em></h2>
-      <p class="lede" style="margin-top:1.5rem">$3,049,000 &middot; 7 bedrooms &middot; 9 baths &middot; 6,469 sq ft &middot; 1.13 acres</p>
-      <div class="form__actions" style="margin-top:2.5rem">
-        <a class="btn btn--ghost" href="index.html">Back to the property</a>
-        <a class="btn btn--ghost" href="gallery.html">Gallery</a>
-      </div>
-    </div>
+  <!-- ===== CLOSING — one quiet image ===== -->
+  <section class="media media--pano bleed">
+    <img src="images/grounds-02.jpg"
+         alt="The 1.13-acre hilltop parcel at 56 Capilano Drive."
+         data-label="The parcel — hilltop siting"
+         loading="lazy">
+  </section>
+
+  <section class="section--tight shell" style="text-align:center">
+    <p class="eyebrow">56 Capilano Drive &middot; Novato, CA 94949</p>
+    <p class="display" style="margin-top:1rem">One address. <em>Three horizons.</em></p>
+    <p class="cap" style="margin-top:1.5rem">$3,049,000 &middot; 7 bd &middot; 9 ba &middot; 6,469 sq ft &middot; 1.13 acres</p>
   </section>
 
 </main>
@@ -169,14 +157,14 @@
   <div class="shell">
     <div class="foot__top">
       <div>
-        <p class="eyebrow eyebrow--mist">The property</p>
+        <p class="eyebrow">The property</p>
         <p class="foot__mark">56 Capilano Drive<br>Novato, CA 94949</p>
         <p class="foot__figure">$3,049,000 &middot; MLS# 326044403</p>
       </div>
       <div>
-        <p class="eyebrow eyebrow--mist">Listing agent</p>
-        <p class="foot__agent-name">Nathan Irving</p>
-        <p class="foot__agent-line">
+        <p class="eyebrow">Listing agent</p>
+        <p class="foot__who">Nathan Irving</p>
+        <p class="foot__line">
           REALTOR<sup>&reg;</sup> &middot; DRE# 02414117<br>
           Coldwell Banker Realty &mdash; Greenbrae<br>
           <a href="tel:+14152094864">415.209.4864</a><br>
@@ -184,9 +172,9 @@
         </p>
       </div>
       <div>
-        <p class="eyebrow eyebrow--mist">Co-listing</p>
-        <p class="foot__agent-name">Amadeo Arnal</p>
-        <p class="foot__agent-line">
+        <p class="eyebrow">Co-listing</p>
+        <p class="foot__who">Amadeo Arnal</p>
+        <p class="foot__line">
           <a href="tel:+14155312599">415.531.2599</a><br>
           <a href="mailto:Amadeo@AmadeoArnal.com?subject=56%20Capilano%20Drive%20-%20Private%20Showing%20Request">Amadeo@AmadeoArnal.com</a>
         </p>

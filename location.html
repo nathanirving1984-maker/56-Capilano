@@ -4,20 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Location — 56 Capilano Drive, Novato, CA 94949</title>
-<meta name="description" content="Where 56 Capilano Drive sits: above Marin Country Club in Ignacio Valley, Novato — minutes to Highway 101 and SMART rail, and roughly 45 minutes to San Francisco.">
+<meta name="description" content="Above Marin Country Club in Ignacio Valley, Novato — minutes to Highway 101 and SMART rail, roughly 45 minutes to San Francisco.">
 <meta name="theme-color" content="#0F2D2B">
 <link rel="canonical" href="./location.html">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Location — 56 Capilano Drive, Novato">
-<meta property="og:description" content="Above Marin Country Club in Ignacio Valley: rail, highway, open space, and schools within a few miles of the ridge.">
-<meta property="og:image" content="images/og-cover.jpg">
+<meta property="og:description" content="Above Marin Country Club in Ignacio Valley: rail, highway, open space and schools within a few miles of the ridge.">
+<meta property="og:image" content="images/view-valley.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:ital,wght@0,300..700;1,300..700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:ital,wght@0,300..600;1,300..500&display=swap">
 <link rel="stylesheet" href="styles.css">
 <script src="js/site.js" defer></script>
 </head>
@@ -28,11 +28,7 @@
 <!-- ===== NAV (identical on every page; only .is-active + aria-current move) ===== -->
 <header class="nav">
   <div class="nav__inner">
-    <a class="nav__brand" href="index.html">
-      <span class="nav__brand-num">56</span>
-      <span class="nav__brand-name">Capilano Drive</span>
-      <span class="nav__brand-loc">Novato, CA</span>
-    </a>
+    <a class="nav__brand" href="index.html"><span>56</span> Capilano Drive</a>
     <nav class="nav__tabs" aria-label="Primary">
       <a class="tab" href="index.html">About</a>
       <a class="tab is-active" href="location.html" aria-current="page">Location</a>
@@ -44,106 +40,77 @@
 
 <main id="main">
 
-  <!-- ===== PAGE HERO ===== -->
-  <section class="page-hero">
-    <div class="shell">
-      <p class="eyebrow">Ignacio Valley &middot; Novato &middot; Marin County</p>
-      <h1 class="page-hero__title">Above the club,<br><em>below the ridge line.</em></h1>
-      <p class="lede">Capilano Drive is a short street on the hill behind Marin Country Club, at the southern end of Novato. It is quiet in the way that only a road going nowhere in particular can be &mdash; and it is four minutes from the freeway.</p>
-    </div>
-  </section>
+  <!-- ===== LEAD PHOTOGRAPH — image before any text ===== -->
+  <div class="media media--pano bleed">
+    <img src="images/view-valley.jpg"
+         alt="The hillside above Ignacio Valley, looking south from the ridge at 56 Capilano Drive."
+         data-label="Ignacio Valley from the ridge — looking south"
+         fetchpriority="high">
+  </div>
 
-  <!-- ===== CONTEXT ===== -->
+  <!-- ===== THE SETTING ===== -->
   <section class="section shell">
-    <div class="section-head">
-      <p class="eyebrow">01 &mdash; The setting</p>
-    </div>
-
-    <div class="orient">
-      <div class="prose">
-        <p>Ignacio is the part of Novato that most people pass through without registering: the stretch where Highway 101 runs between two sets of hills, with the bay flats opening to the east and the country club tucked into the western slope. The residential streets above the club &mdash; Capilano among them &mdash; were laid out to face outward, which is why a house here gets water, valley, and fairway from a single parcel.</p>
-        <p>What that buys, practically, is a rural-feeling address with an urban commute. The Ignacio Boulevard interchange is a few minutes down the hill. SMART rail runs the length of the county from stations north and south of here. The open space that hems in the valley on both sides is public and permanent, which keeps the ridgelines empty.</p>
-      </div>
-
-      <div class="prose">
-        <p>Novato itself sits at the top of Marin, far enough north to be materially less expensive than Ross or Mill Valley and close enough that the difference in drive time to the Golden Gate is measured in minutes rather than hours. The town has a working downtown, a large public school district, and more protected land per resident than anywhere else on the 101 corridor.</p>
-        <p class="mono-note" style="margin-top:1.5rem">Distances and drive times below are approximate, measured from the Capilano Drive ridge, and offered for orientation only. Buyer to verify all figures, school assignment, and transit schedules independently.</p>
-      </div>
-    </div>
+    <p class="eyebrow">Ignacio Valley &middot; Novato &middot; Marin County</p>
+    <h1 class="display" style="margin-top:1.25rem;max-width:18ch">Above the club, <em>below the ridge line.</em></h1>
+    <p class="say" style="margin-top:2rem">A short street on the hill behind Marin Country Club, quiet in the way only a road going nowhere can be &mdash; and four minutes from the freeway.</p>
   </section>
 
-  <!-- ===== DISTANCES ===== -->
-  <section class="panel-sand">
-    <div class="section shell">
-      <div class="section-head">
-        <p class="eyebrow">02 &mdash; What is nearby</p>
+  <!-- ===== PROXIMITY — slim captioned rows ===== -->
+  <section class="section--tight shell">
+    <p class="eyebrow" style="margin-bottom:1.5rem">What is nearby</p>
+
+    <div class="near">
+
+      <div class="near__row rise">
+        <p class="near__name">Marin Country Club</p>
+        <p class="near__fig">Adjacent</p>
+        <p class="near__note">The fairways run directly below the ridge; the clubhouse sits around the base of the hill.</p>
       </div>
 
-      <div class="distances">
-
-        <div class="distance reveal">
-          <p class="distance__name">Marin Country Club</p>
-          <p class="distance__figure">Adjacent</p>
-          <p class="distance__note">The fairways run directly below the ridge. The clubhouse and entrance are on Country Club Drive, a short drive around the base of the hill. Golf, tennis, pool, and dining; membership by application.</p>
-        </div>
-
-        <div class="distance reveal">
-          <p class="distance__name">Highway 101 &mdash; Ignacio Boulevard</p>
-          <p class="distance__figure">≈ 1.5 mi</p>
-          <p class="distance__note">The nearest full interchange, giving southbound access toward San Rafael and the Golden Gate and northbound toward Petaluma and Sonoma County.</p>
-        </div>
-
-        <div class="distance reveal">
-          <p class="distance__name">SMART &mdash; Novato Hamilton station</p>
-          <p class="distance__figure">≈ 3 mi</p>
-          <p class="distance__note">The closest rail stop to the property. Commuter service south to Larkspur, connecting to the Golden Gate Ferry for a car-free route into San Francisco.</p>
-        </div>
-
-        <div class="distance reveal">
-          <p class="distance__name">SMART &mdash; Novato San Marin station</p>
-          <p class="distance__figure">≈ 6 mi</p>
-          <p class="distance__note">The northern Novato stop, serving the San Marin and downtown side of town on the same Larkspur&ndash;Santa Rosa line.</p>
-        </div>
-
-        <div class="distance reveal">
-          <p class="distance__name">Ignacio &amp; Indian Valley open space</p>
-          <p class="distance__figure">≈ 1&ndash;2 mi</p>
-          <p class="distance__note">Marin County Open Space District preserves on both sides of the valley, with trailheads minutes from the house and connections through to Indian Valley, Loma Verde, and the wider ridge network.</p>
-        </div>
-
-        <div class="distance reveal">
-          <p class="distance__name">Novato Unified School District</p>
-          <p class="distance__figure">District-wide</p>
-          <p class="distance__note">The property lies within Novato Unified. Elementary, middle, and high school assignment is set by district boundary and subject to change &mdash; confirm current assignment directly with the district.</p>
-        </div>
-
-        <div class="distance reveal">
-          <p class="distance__name">Downtown Novato</p>
-          <p class="distance__figure">≈ 5 mi</p>
-          <p class="distance__note">Grant Avenue: grocery, restaurants, the farmers' market, and the civic center, roughly ten minutes north on Redwood Boulevard or 101.</p>
-        </div>
-
-        <div class="distance reveal">
-          <p class="distance__name">San Francisco</p>
-          <p class="distance__figure">≈ 30 mi &middot; 45 min</p>
-          <p class="distance__note">A straight run down 101 across the Golden Gate. Roughly forty minutes outside of peak hours; allow an hour or more inbound on weekday mornings. Larkspur ferry offers the alternative.</p>
-        </div>
-
-        <div class="distance reveal">
-          <p class="distance__name">San Francisco International (SFO)</p>
-          <p class="distance__figure">≈ 45 mi</p>
-          <p class="distance__note">About an hour without traffic. Oakland International is comparable by distance via the Richmond&ndash;San Rafael Bridge.</p>
-        </div>
-
+      <div class="near__row rise">
+        <p class="near__name">Highway 101 &mdash; Ignacio Boulevard</p>
+        <p class="near__fig">≈ 1.5 mi</p>
+        <p class="near__note">The nearest full interchange, south toward San Rafael and the Golden Gate.</p>
       </div>
+
+      <div class="near__row rise">
+        <p class="near__name">SMART &mdash; Novato Hamilton station</p>
+        <p class="near__fig">≈ 3 mi</p>
+        <p class="near__note">The closest rail stop; south to Larkspur and the San Francisco ferry.</p>
+      </div>
+
+      <div class="near__row rise">
+        <p class="near__name">SMART &mdash; Novato San Marin station</p>
+        <p class="near__fig">≈ 6 mi</p>
+        <p class="near__note">The northern Novato stop on the same Larkspur&ndash;Santa Rosa line.</p>
+      </div>
+
+      <div class="near__row rise">
+        <p class="near__name">Ignacio &amp; Indian Valley open space</p>
+        <p class="near__fig">≈ 1&ndash;2 mi</p>
+        <p class="near__note">County preserves on both sides of the valley, keeping the ridgelines permanently empty.</p>
+      </div>
+
+      <div class="near__row rise">
+        <p class="near__name">Novato Unified School District</p>
+        <p class="near__fig">District-wide</p>
+        <p class="near__note">Assignment is set by district boundary and subject to change; confirm directly with the district.</p>
+      </div>
+
+      <div class="near__row rise">
+        <p class="near__name">San Francisco</p>
+        <p class="near__fig">≈ 30 mi &middot; 45 min</p>
+        <p class="near__note">Straight down 101 across the Golden Gate; allow longer inbound on weekday mornings.</p>
+      </div>
+
     </div>
+
+    <p class="cap" style="margin-top:1.5rem">Distances approximate, measured from the ridge, offered for orientation only. Buyer to verify independently.</p>
   </section>
 
   <!-- ===== MAP ===== -->
-  <section class="section shell">
-    <div class="section-head">
-      <p class="eyebrow">03 &mdash; On the map</p>
-    </div>
+  <section class="section--tight shell">
+    <p class="eyebrow" style="margin-bottom:1.25rem">On the map</p>
 
     <div class="map">
       <iframe
@@ -153,21 +120,17 @@
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-      <div class="map__caption">
-        <p class="mono-note">56 Capilano Drive, Novato, CA 94949 &mdash; marker approximate</p>
+      <div class="map__bar">
+        <p class="cap">56 Capilano Drive, Novato, CA 94949 &mdash; marker approximate</p>
         <a class="map__link"
            href="https://www.google.com/maps/search/?api=1&amp;query=56+Capilano+Dr%2C+Novato%2C+CA+94949"
-           target="_blank"
-           rel="noopener noreferrer">Open in Google Maps &nearr;</a>
+           target="_blank" rel="noopener noreferrer">Open in Google Maps &nearr;</a>
       </div>
     </div>
 
-    <p class="mono-note" style="margin-top:1.5rem">Map data &copy; OpenStreetMap contributors. The marker locates the Capilano Drive ridge for orientation; it is not a parcel boundary. Confirm the exact site with the listing agent before relying on it.</p>
+    <p class="cap" style="margin-top:1.25rem">Map data &copy; OpenStreetMap contributors. The marker locates the ridge for orientation; it is not a parcel boundary.</p>
 
-    <div class="form__actions" style="margin-top:2.5rem">
-      <a class="btn btn--primary" href="contact.html">Arrange a visit</a>
-      <a class="btn btn--ghost" href="index.html#horizons">See the three horizons</a>
-    </div>
+    <p style="margin-top:2.5rem"><a class="btn" href="gallery.html">See the photographs</a></p>
   </section>
 
 </main>
@@ -177,14 +140,14 @@
   <div class="shell">
     <div class="foot__top">
       <div>
-        <p class="eyebrow eyebrow--mist">The property</p>
+        <p class="eyebrow">The property</p>
         <p class="foot__mark">56 Capilano Drive<br>Novato, CA 94949</p>
         <p class="foot__figure">$3,049,000 &middot; MLS# 326044403</p>
       </div>
       <div>
-        <p class="eyebrow eyebrow--mist">Listing agent</p>
-        <p class="foot__agent-name">Nathan Irving</p>
-        <p class="foot__agent-line">
+        <p class="eyebrow">Listing agent</p>
+        <p class="foot__who">Nathan Irving</p>
+        <p class="foot__line">
           REALTOR<sup>&reg;</sup> &middot; DRE# 02414117<br>
           Coldwell Banker Realty &mdash; Greenbrae<br>
           <a href="tel:+14152094864">415.209.4864</a><br>
@@ -192,9 +155,9 @@
         </p>
       </div>
       <div>
-        <p class="eyebrow eyebrow--mist">Co-listing</p>
-        <p class="foot__agent-name">Amadeo Arnal</p>
-        <p class="foot__agent-line">
+        <p class="eyebrow">Co-listing</p>
+        <p class="foot__who">Amadeo Arnal</p>
+        <p class="foot__line">
           <a href="tel:+14155312599">415.531.2599</a><br>
           <a href="mailto:Amadeo@AmadeoArnal.com?subject=56%20Capilano%20Drive%20-%20Private%20Showing%20Request">Amadeo@AmadeoArnal.com</a>
         </p>

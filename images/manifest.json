@@ -1,0 +1,78 @@
+{
+  "_comment": "Photo manifest. Drop .jpg files into /images/ and list them here. 'tab' may be a string or an array; the Gallery renders every entry whose tab includes 'gallery'. 'size' is \"\" | \"wide\" | \"tall\" and controls the asymmetric grid. 'alt' is optional and falls back to 'caption'. Entries whose file is missing render as a labelled placeholder frame.",
+  "basePath": "images/",
+  "images": [
+    {
+      "file": "hero-aerial.jpg",
+      "caption": "The ridge from above — the club below, the bay beyond",
+      "tab": ["about", "gallery"],
+      "size": "wide"
+    },
+    {
+      "file": "view-bay.jpg",
+      "caption": "San Pablo Bay — east, open water",
+      "tab": ["about", "gallery"],
+      "size": "tall"
+    },
+    {
+      "file": "view-valley.jpg",
+      "caption": "Ignacio Valley — south, the valley floor",
+      "tab": ["about", "gallery"],
+      "size": ""
+    },
+    {
+      "file": "view-fairway.jpg",
+      "caption": "Marin Country Club — west, the fairways",
+      "tab": ["about", "gallery"],
+      "size": ""
+    },
+    {
+      "file": "exterior-01.jpg",
+      "caption": "Approach from Capilano Drive",
+      "tab": ["about", "gallery"],
+      "size": ""
+    },
+    {
+      "file": "exterior-02.jpg",
+      "caption": "West elevation, late afternoon",
+      "tab": "gallery",
+      "size": ""
+    },
+    {
+      "file": "interior-great-room.jpg",
+      "caption": "The great room, facing the water",
+      "tab": ["about", "gallery"],
+      "size": "tall"
+    },
+    {
+      "file": "interior-living.jpg",
+      "caption": "Living room",
+      "tab": "gallery",
+      "size": ""
+    },
+    {
+      "file": "interior-kitchen.jpg",
+      "caption": "Kitchen",
+      "tab": ["about", "gallery"],
+      "size": ""
+    },
+    {
+      "file": "interior-primary-suite.jpg",
+      "caption": "Primary suite — one of seven bedrooms",
+      "tab": ["about", "gallery"],
+      "size": "wide"
+    },
+    {
+      "file": "grounds-01.jpg",
+      "caption": "Terrace and grounds",
+      "tab": ["about", "gallery"],
+      "size": ""
+    },
+    {
+      "file": "grounds-02.jpg",
+      "caption": "The 1.13-acre parcel, hilltop siting",
+      "tab": "gallery",
+      "size": "tall"
+    }
+  ]
+}

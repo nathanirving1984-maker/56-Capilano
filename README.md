@@ -164,10 +164,13 @@ on the `<form>` in `contact.html`:
 
 ```html
 <form id="inquiry"
-      data-to="nathan.irving@cbrealty.com"
-      data-cc="Amadeo@AmadeoArnal.com"
+      data-to="Amadeo@AmadeoArnal.com"
+      data-cc="nathan.irving@cbrealty.com"
       data-subject="56 Capilano Drive - Private Showing Request">
 ```
+
+Amadeo Arnal is the primary recipient; Nathan Irving is cc'd. Swap the two
+attributes to reverse that.
 
 If you later add a real handler (Formspree, Netlify Forms, Basin), give the
 `<form>` an `action` and `method="POST"`. `js/site.js` detects the `action`

@@ -135,9 +135,24 @@ python3 -m http.server 8000
 
 ## Deploying
 
-Settings → Pages → Build and deployment → Deploy from a branch → select the
-branch, folder `/ (root)`. All internal links are relative, so the site works
-at both a user-site root and a `/56-Capilano/` project path.
+Deployment is automatic via `.github/workflows/pages.yml`. Every push to
+`main` or `claude/capilano-listing-site-2fc6um` publishes the repository root
+to GitHub Pages. You can also trigger it by hand from the Actions tab
+("Deploy to GitHub Pages" → Run workflow).
+
+**Live at:** https://nathanirving1984-maker.github.io/56-Capilano/
+
+The workflow exists because this repository was created empty and has no
+default branch with content, so Pages offers only the "GitHub Actions" source
+— "Deploy from a branch" has no branch to point at. The workflow passes
+`enablement: true` to `actions/configure-pages`, so it switches Pages on
+itself; nothing needs setting in Settings → Pages.
+
+If you later create a `main` branch and prefer the simpler branch-based
+deploy, you can delete this workflow and switch the source over.
+
+All internal links are relative, so the site works at both a user-site root
+and the `/56-Capilano/` project path it currently uses.
 
 ---
 

@@ -1,5 +1,5 @@
 {
-  "_comment": "Photo manifest. Drop .jpg files into /images/ and list them here. 'tab' may be a string or an array; the Gallery renders every entry whose tab includes 'gallery'. 'size' is \"\" | \"wide\" | \"tall\" and controls the asymmetric grid. 'alt' is optional and falls back to 'caption'. Entries whose file is missing render as a labelled placeholder frame — the four trailing entries below are outstanding shots held open on purpose.",
+  "_comment": "Photo manifest. Drop .jpg files into /images/ and list them here. 'tab' may be a string or an array; the Gallery renders every entry whose tab includes 'gallery'. 'size' is \"\" | \"wide\" | \"tall\" and controls the asymmetric grid. 'alt' is optional and falls back to 'caption'. Entries whose file is missing render as a labelled placeholder frame; every slot is currently filled. Order below is the gallery's reading order: arrival, the setting, the three horizons, the interior, then the grounds.",
   "basePath": "images/",
   "images": [
     {
@@ -24,6 +24,13 @@
       "size": ""
     },
     {
+      "file": "view-bay.jpg",
+      "caption": "San Pablo Bay on the horizon, through the window wall",
+      "alt": "Looking out through the corner window wall to a flat band of open water — San Pablo Bay — on the far horizon, with the valley and treetops below it.",
+      "tab": ["about", "gallery"],
+      "size": ""
+    },
+    {
       "file": "view-valley.jpg",
       "caption": "From the terrace — the valley and the hills beyond",
       "alt": "The view out from the terrace at 56 Capilano Drive, over the treetops to the open hills across the valley.",
@@ -38,6 +45,41 @@
       "size": ""
     },
     {
+      "file": "interior-great-room.jpg",
+      "caption": "The great room, under the vault",
+      "alt": "The great room, with a vaulted ceiling, sectional seating and a broad window onto the oaks.",
+      "tab": ["about", "gallery"],
+      "size": "wide"
+    },
+    {
+      "file": "interior-living.jpg",
+      "caption": "Living room — the window wall onto the hills",
+      "alt": "The living room, its full-height window wall opening onto the wooded hills across the valley.",
+      "tab": ["about", "gallery"],
+      "size": ""
+    },
+    {
+      "file": "interior-window-room.jpg",
+      "caption": "The window room — glass on two sides",
+      "alt": "A corner sitting room glazed on two sides, four chairs gathered under an orb chandelier, looking out over the treetops to the bay beyond.",
+      "tab": ["about", "gallery"],
+      "size": "tall"
+    },
+    {
+      "file": "interior-kitchen.jpg",
+      "caption": "Kitchen — granite peninsula and window seat",
+      "alt": "The kitchen: oak cabinetry, a curved granite peninsula with stools, terracotta tile floor and a cushioned window seat looking into the oaks.",
+      "tab": ["about", "gallery"],
+      "size": ""
+    },
+    {
+      "file": "interior-primary-bath.jpg",
+      "caption": "Primary bath — soaking tub set into the window wall",
+      "alt": "A freestanding soaking tub in the primary bath, set into a wall of wood-framed windows looking out to the hills.",
+      "tab": ["about", "gallery"],
+      "size": "tall"
+    },
+    {
       "file": "grounds-01.jpg",
       "caption": "Pool, terrace and lawn, the club beyond",
       "alt": "The pool, terrace and lawn behind the residence, with the fairways of Marin Country Club immediately beyond the tree line.",
@@ -49,38 +91,6 @@
       "caption": "The 1.13-acre parcel, hilltop siting",
       "alt": "Overhead view of the full parcel — the residence, its circular drive, the pool terrace and the rear lawn.",
       "tab": ["about", "gallery"],
-      "size": ""
-    },
-    {
-      "file": "interior-primary-bath.jpg",
-      "caption": "Primary bath — soaking tub set into the window wall",
-      "alt": "A freestanding soaking tub in the primary bath, set into a wall of wood-framed windows looking out to the hills.",
-      "tab": ["about", "gallery"],
-      "size": "tall"
-    },
-
-    {
-      "file": "view-bay.jpg",
-      "caption": "San Pablo Bay — east, open water",
-      "tab": ["about", "gallery"],
-      "size": ""
-    },
-    {
-      "file": "interior-great-room.jpg",
-      "caption": "The great room, facing the water",
-      "tab": ["about", "gallery"],
-      "size": "tall"
-    },
-    {
-      "file": "interior-kitchen.jpg",
-      "caption": "Kitchen",
-      "tab": ["about", "gallery"],
-      "size": ""
-    },
-    {
-      "file": "interior-living.jpg",
-      "caption": "Living room",
-      "tab": "gallery",
       "size": ""
     }
   ]

@@ -97,10 +97,11 @@ Any of these that is missing renders as a dashed brass placeholder frame
 stating which shot belongs there — so an incomplete site still looks
 deliberate rather than broken.
 
-**Still outstanding.** Four slots are held open and currently show that
-placeholder frame: `view-bay.jpg`, `interior-great-room.jpg`,
-`interior-kitchen.jpg` and `interior-living.jpg`. Save a file at any of those
-paths and it drops straight in — the manifest entries are already written.
+**All twelve slots are filled.** Replacing any photograph is a matter of
+saving a new file over the old one at the same path; no code or manifest edit
+is needed. `images/interior-window-room.jpg` is a thirteenth photograph that
+has no fixed slot in the markup — it appears in the Gallery only, via the
+manifest.
 
 ### 2. The gallery — `images/manifest.json`
 

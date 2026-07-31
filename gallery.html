@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gallery — 56 Capilano Drive, Novato, CA 94949</title>
+<meta name="description" content="Photography of 56 Capilano Drive, Novato — a 6,469 sq ft hilltop estate above Marin Country Club with views to San Pablo Bay and Ignacio Valley.">
+<meta name="theme-color" content="#0F2D2B">
+<link rel="canonical" href="./gallery.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Gallery — 56 Capilano Drive, Novato">
+<meta property="og:description" content="Photography of the residence, the grounds, and the three horizons.">
+<meta property="og:image" content="images/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:ital,wght@0,300..700;1,300..700&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script src="js/site.js" defer></script>
+<script src="js/gallery-manifest.js" defer></script>
+<script src="js/gallery.js" defer></script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ===== NAV (identical on every page; only .is-active + aria-current move) ===== -->
+<header class="nav">
+  <div class="nav__inner">
+    <a class="nav__brand" href="index.html">
+      <span class="nav__brand-num">56</span>
+      <span class="nav__brand-name">Capilano Drive</span>
+      <span class="nav__brand-loc">Novato, CA</span>
+    </a>
+    <nav class="nav__tabs" aria-label="Primary">
+      <a class="tab" href="index.html">About</a>
+      <a class="tab" href="location.html">Location</a>
+      <a class="tab is-active" href="gallery.html" aria-current="page">Gallery</a>
+      <a class="tab" href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ===== PAGE HERO ===== -->
+  <section class="page-hero">
+    <div class="shell">
+      <p class="eyebrow">The residence &middot; the grounds &middot; the horizons</p>
+      <h1 class="page-hero__title">Twelve frames,<br><em>in the order you'd walk them.</em></h1>
+      <p class="lede">The sequence below follows the house as you would actually meet it &mdash; up the drive, through the entry, out to the view, and back down to the parcel it sits on.</p>
+      <p class="mono-note" id="gallery-status" style="margin-top:1.5rem" role="status">Loading gallery&hellip;</p>
+    </div>
+  </section>
+
+  <!-- ===== GRID ===== -->
+  <section class="section shell">
+    <div class="section-head">
+      <p class="eyebrow">01 &mdash; Photography</p>
+    </div>
+
+    <div class="gallery" id="gallery"></div>
+
+    <noscript>
+      <div class="gallery__empty">
+        <p class="frame__label">This gallery is rendered with JavaScript, which is currently disabled. Photography is available on request &mdash; contact Nathan Irving at 415.209.4864 or <a href="mailto:nathan.irving@cbrealty.com?subject=56%20Capilano%20Drive%20-%20Private%20Showing%20Request">nathan.irving@cbrealty.com</a>.</p>
+      </div>
+    </noscript>
+
+    <div class="form__actions" style="margin-top:3rem">
+      <a class="btn btn--primary" href="contact.html">Request the full photo set</a>
+      <a class="btn btn--ghost" href="location.html">See the location</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== LIGHTBOX (wired by js/gallery.js) ===== -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photograph viewer" hidden>
+  <img class="lightbox__img" src="" alt="">
+  <div class="lightbox__bar">
+    <button class="lightbox__btn" type="button" data-lb="prev" aria-label="Previous photograph">&larr; Prev</button>
+    <span class="lightbox__count" aria-live="polite"></span>
+    <button class="lightbox__btn" type="button" data-lb="next" aria-label="Next photograph">Next &rarr;</button>
+    <span class="lightbox__cap"></span>
+  </div>
+  <button class="lightbox__btn lightbox__close" type="button" data-lb="close" aria-label="Close viewer">Close &times;</button>
+</div>
+
+<!-- ===== FOOTER (identical on every page) ===== -->
+<footer class="foot">
+  <div class="shell">
+    <div class="foot__top">
+      <div>
+        <p class="eyebrow eyebrow--mist">The property</p>
+        <p class="foot__mark">56 Capilano Drive<br>Novato, CA 94949</p>
+        <p class="foot__figure">$3,049,000 &middot; MLS# 326044403</p>
+      </div>
+      <div>
+        <p class="eyebrow eyebrow--mist">Listing agent</p>
+        <p class="foot__agent-name">Nathan Irving</p>
+        <p class="foot__agent-line">
+          REALTOR<sup>&reg;</sup> &middot; DRE# 02414117<br>
+          Coldwell Banker Realty &mdash; Greenbrae<br>
+          <a href="tel:+14152094864">415.209.4864</a><br>
+          <a href="mailto:nathan.irving@cbrealty.com?subject=56%20Capilano%20Drive%20-%20Private%20Showing%20Request">nathan.irving@cbrealty.com</a>
+        </p>
+      </div>
+      <div>
+        <p class="eyebrow eyebrow--mist">Co-listing</p>
+        <p class="foot__agent-name">Amadeo Arnal</p>
+        <p class="foot__agent-line">
+          <a href="tel:+14155312599">415.531.2599</a><br>
+          <a href="mailto:Amadeo@AmadeoArnal.com?subject=56%20Capilano%20Drive%20-%20Private%20Showing%20Request">Amadeo@AmadeoArnal.com</a>
+        </p>
+      </div>
+    </div>
+
+    <nav class="foot__nav" aria-label="Footer">
+      <a href="index.html">About</a>
+      <a href="location.html">Location</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <p class="foot__legal">&copy; 2026 Coldwell Banker Realty. All rights reserved. Coldwell Banker Realty fully supports the principles of the Fair Housing Act and the Equal Opportunity Act. Each Coldwell Banker Realty office is independently owned and operated. Information deemed reliable but not guaranteed; buyer to independently verify all facts, square footage, and lot size.</p>
+  </div>
+</footer>
+
+</body>
+</html>

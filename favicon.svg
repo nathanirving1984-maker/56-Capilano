@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="56 Capilano Drive">
+  <rect width="64" height="64" fill="#0F2D2B"/>
+  <!-- Three horizons: three sightlines, brass, receding -->
+  <rect x="10" y="22" width="44" height="2" fill="#B08D57"/>
+  <rect x="10" y="34" width="34" height="2" fill="#B08D57" opacity="0.72"/>
+  <rect x="10" y="46" width="24" height="2" fill="#B08D57" opacity="0.45"/>
+  <!-- Struck origin point -->
+  <rect x="6" y="19" width="8" height="8" fill="#D9C09B" transform="rotate(45 10 23)"/>
+</svg>

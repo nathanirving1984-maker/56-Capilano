@@ -215,14 +215,13 @@ and stands down automatically — no code change.
 
 ## Deploying
 
-Automatic via `.github/workflows/pages.yml`. Every push to `main` or
-`claude/capilano-listing-site-2fc6um` publishes the repository root. You can
-also run it by hand from the Actions tab.
+Automatic via `.github/workflows/pages.yml`. Every push to `main` publishes
+the repository root. You can also run it by hand from the Actions tab.
 
-The workflow exists because this repository was created empty and has no
-default branch with content, so Pages offers only the "GitHub Actions" source.
-It passes `enablement: true` to `actions/configure-pages`, so it switches Pages
-on itself — nothing to set in Settings → Pages.
+The workflow exists because this repository was created empty, so Pages offers
+only the "GitHub Actions" source. It passes `enablement: true` to
+`actions/configure-pages`, so it switches Pages on itself — nothing to set in
+Settings → Pages.
 
 All internal links are relative, so the site works at both a user-site root and
 the `/56-Capilano/` project path it currently uses.

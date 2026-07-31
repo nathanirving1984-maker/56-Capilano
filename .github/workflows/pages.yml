@@ -7,7 +7,6 @@ on:
   push:
     branches:
       - main
-      - claude/capilano-listing-site-2fc6um
   workflow_dispatch:
 
 # Required by actions/deploy-pages.

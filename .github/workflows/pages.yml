@@ -33,6 +33,10 @@ jobs:
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
+        with:
+          # Turn Pages on (with Actions as the source) if it isn't already,
+          # so no manual step in Settings is needed.
+          enablement: true
 
       - name: Upload site
         uses: actions/upload-pages-artifact@v3

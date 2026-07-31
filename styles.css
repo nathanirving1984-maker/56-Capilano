@@ -714,7 +714,9 @@ li { list-style: none; }
   width: 100%;
   height: clamp(21rem, 56vh, 34rem);
   border: 0;
-  filter: saturate(0.7) sepia(0.15) contrast(1.02);
+  /* Only a light desaturation. This map carries the actual address, so tinting
+     it far enough to match the palette would cost label legibility. */
+  filter: saturate(0.88);
 }
 
 .map__bar {

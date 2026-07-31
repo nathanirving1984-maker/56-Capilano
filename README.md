@@ -163,14 +163,26 @@ marked `fetchpriority="high"` so it wins the race for the first paint.
 
 ## The map
 
-`location.html` embeds OpenStreetMap — a real map, no API key, no billing.
-The marker is placed on the Capilano Drive ridge and labelled approximate.
+`location.html` embeds Google Maps, queried **by address string**, not by
+latitude/longitude:
 
-If you would rather ship a static map image, save one as
-`images/location-map.jpg` and replace the `<iframe class="map__embed">` with
-an `<img>`. To use Google instead, swap the iframe `src` for the
+```
+https://maps.google.com/maps?q=56%20Capilano%20Dr%2C%20Novato%2C%20CA%2094949&z=16&output=embed
+```
+
+This needs no API key and no billing account, and Google geocodes the pin
+itself — so the marker cannot drift from the real address.
+
+**Do not swap this for hardcoded coordinates.** An earlier version used an
+OpenStreetMap embed with a lat/long that had been estimated rather than
+geocoded, and it pointed at the wrong place. Letting the map service resolve
+the address removes that failure mode entirely.
+
+If you later get a Google Maps API key, the supported upgrade is the
 [Maps Embed API](https://developers.google.com/maps/documentation/embed/get-started)
-once you have a key.
+in `place` mode — still address-based. If you would rather ship a static map
+image, save one as `images/location-map.jpg` and replace the
+`<iframe class="map__embed">` with an `<img>`.
 
 ---
 

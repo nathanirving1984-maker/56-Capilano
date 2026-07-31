@@ -112,23 +112,27 @@
   <section class="section--tight shell">
     <p class="eyebrow" style="margin-bottom:1.25rem">On the map</p>
 
+    <!-- The map is queried by ADDRESS, not by hardcoded coordinates, so Google
+         geocodes the pin itself and it cannot drift from the real location.
+         Do not replace this with a lat/long — that is how it went wrong before. -->
     <div class="map">
       <iframe
         class="map__embed"
-        title="Map showing the location of 56 Capilano Drive, Novato, California"
-        src="https://www.openstreetmap.org/export/embed.html?bbox=-122.5680%2C38.0530%2C-122.5270%2C38.0790&amp;layer=mapnik&amp;marker=38.0660%2C-122.5475"
+        title="Map showing 56 Capilano Drive, Novato, California"
+        src="https://maps.google.com/maps?q=56%20Capilano%20Dr%2C%20Novato%2C%20CA%2094949&amp;z=16&amp;output=embed"
         loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"></iframe>
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen></iframe>
 
       <div class="map__bar">
-        <p class="cap">56 Capilano Drive, Novato, CA 94949 &mdash; marker approximate</p>
+        <p class="cap">56 Capilano Drive, Novato, CA 94949</p>
         <a class="map__link"
            href="https://www.google.com/maps/search/?api=1&amp;query=56+Capilano+Dr%2C+Novato%2C+CA+94949"
            target="_blank" rel="noopener noreferrer">Open in Google Maps &nearr;</a>
       </div>
     </div>
 
-    <p class="cap" style="margin-top:1.25rem">Map data &copy; OpenStreetMap contributors. The marker locates the ridge for orientation; it is not a parcel boundary.</p>
+    <p class="cap" style="margin-top:1.25rem">The pin marks the street address. It is not a parcel boundary &mdash; buyer to verify lot lines and dimensions independently.</p>
 
     <p style="margin-top:2.5rem"><a class="btn" href="gallery.html">See the photographs</a></p>
   </section>
